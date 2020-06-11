@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 // import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Nav from "./components/Nav"
+import Nav from "./components/Nav";
+import Jumbotron from "./components/Jumbotron"
 import "./App.css";
 
 class App extends Component {
@@ -8,6 +9,7 @@ class App extends Component {
     return (
       <div className="App">
         <Nav />
+        <Jumbotron />
       </div>
     );
   }
