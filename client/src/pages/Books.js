@@ -57,52 +57,39 @@ class Books extends Component {
     this.searchBooks(this.state.search)
   }
 
-  // handleFormSubmit = event => {
-  //   event.preventDefault();
-  //   if (this.state.title && this.state.author) {
-  //     API.saveBook({
-  //       title: this.state.title,
-  //       author: this.state.author,
-  //       synopsis: this.state.synopsis
-  //     })
-  //       .then(res => this.loadBooks())
-  //       .catch(err => console.log(err));
-  //   }
-  // };
-
   render() {
     return (
-      <div>
+      <Container fluid>
+          <div className="card">
             <SearchForm
               value={this.state.search}
               handleInputChange={this.handleInputChange}
               handleFormSubmit={this.handleFormSubmit}
             />
-
+          </div><br />
             {this.state.books.length ? (
               <List>
                 {this.state.books.map(book => {
-                  // return(
+                  return(
                     // <div>
                       <ListItem
                         key={book.id}
                         title={book.volumeInfo.title}
-                        author={book.volumeInfo.author}
+                        author={book.volumeInfo.authors ? book.volumeInfo.authors : ["No Author Available"]}
                         synopsis={book.volumeInfo.description}
                         src={book.volumeInfo.imageLinks.thumbnail}
                       />
                     // </div>
-                    // )
+                    )
                 })} 
             </List>
             ) : (
               <h3>Please search for a book</h3>
             )}
               
-           
+          
              
-      </div>
-            
+      </Container>      
 
     );
   }

@@ -2,27 +2,12 @@ import React from "react";
 
 // This file exports the Input, TextArea, and FormBtn components
 
-// export function Input(props) {
-//   return (
-//     <div className="form-group">
-//       <input className="form-control" {...props} />
-//     </div>
-//   );
-// }
-
-// export function FormBtn(props) {
-//   return (
-//     <button onClick={props.handleFormSubmit} style={{ float: "right", marginBottom: 10 }} className="btn btn-success">
-//       {props.children}
-//     </button>
-//   );
-// }
 
 function SearchForm(props) {
   return (
     <form>
       <div className="form-group">
-        <label htmlFor="search">Search:</label>
+        <label htmlFor="search">Book Search:</label>
         <input
           onChange={props.handleInputChange}
           value={props.value}
@@ -32,8 +17,8 @@ function SearchForm(props) {
           placeholder="Search For a Book"
           id="search"
         />
-        <br />
-        <button onClick={props.handleFormSubmit} className="btn btn-primary">
+        {/* <br /> */}
+        <button onClick={props.handleFormSubmit} style={{ float: "right", marginBottom: 10 }} className="btn btn-primary">
           Search
         </button>
       </div>
