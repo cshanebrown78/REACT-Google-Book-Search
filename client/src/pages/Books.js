@@ -87,44 +87,56 @@ class Books extends Component {
                     <List>
                       {this.state.books.map(book => {
                         return(
-                          <div className="card">
-                              <ListItem key={book.id}>
-                                <div className="googlebooks">
-                                  <a
-                                    // key={"" + index + book.id}
-                                    href={book.volumeInfo.infoLink}
-                                  >
-                                    {book.volumeInfo.title}
-                                  </a>
-                                  <p>Written by: {book.volumeInfo.authors ? book.volumeInfo.authors : ["No Author Available"]}</p>
-                                  <p>
-                                    <img align="left" style={{paddingRight:10}}
-                                      src={book.volumeInfo.imageLinks.thumbnail} alt="Book"
-                                    />
-                                    {book.volumeInfo.description}
-                                  </p>
-                                </div>
-                                <div className="save-btn">
-                                  <SaveBtn 
-                                    btntype="info"
-                                    onClick={() => this.saveBooks({
-                                      title: book.volumeInfo.title,
-                                      author: book.volumeInfo.authors,
-                                      synopsis: book.volumeInfo.description,
-                                      thumbnail: book.volumeInfo.imageLinks.thumbnail,
-                                      link: book.volumeInfo.infoLink,
-                                      _id: book.id
-                                    })}
-                                  >
-                                    Save
-                                  </SaveBtn>
-                                </div>
+                          <Row>
+                            <Col size="md-12">
+                              <div className="card">
+                                <ListItem key={book.id}>
+                                  <div className="googlebooks">
+                                    <Row>
+                                      <Col size="md-10">
+                                        <a
+                                          // key={"" + index + book.id}
+                                          href={book.volumeInfo.infoLink}
+                                        >
+                                          {book.volumeInfo.title}
+                                        </a>
+                                        <p>Written by: {book.volumeInfo.authors ? book.volumeInfo.authors : ["No Author Available"]}</p>
+                                      </Col>
+                                      <Col size="md-2">
+                                        <div className="save-btn">
+                                          <SaveBtn 
+                                            btntype="info"
+                                            onClick={() => this.saveBooks({
+                                              title: book.volumeInfo.title,
+                                              author: book.volumeInfo.authors,
+                                              synopsis: book.volumeInfo.description,
+                                              thumbnail: book.volumeInfo.imageLinks.thumbnail,
+                                              link: book.volumeInfo.infoLink,
+                                              _id: book.id
+                                            })}
+                                          >
+                                            Save
+                                          </SaveBtn>
+                                        </div>
+                                      </Col>
+                                      
+                                    </Row>
+                                    
+                                    <p>
+                                      <img align="left" style={{paddingRight:10}}
+                                        src={book.volumeInfo.imageLinks.thumbnail} alt="Book"
+                                      />
+                                      {book.volumeInfo.description}
+                                    </p>
+                                  </div>
+                                  
 
-                              </ListItem>
+                                </ListItem>
+                            </div>
+                            </Col>
                             
-                            
-                            
-                          </div> 
+                          </Row>
+ 
                           
                         )
                         
