@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import DeleteBtn from "../components/DeleteBtn";
+import SaveBtn from "../components/SaveBtn";
 // import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 // import { Link } from "react-router-dom";
@@ -12,6 +12,7 @@ import SearchForm from "../components/SearchForm"
 class Books extends Component {
   state = {
     books: [],
+    savedBooks: [],
     result: {},
     search: "",
     title: "",
@@ -30,6 +31,19 @@ class Books extends Component {
       )
       .catch(err => console.log(err));
   };
+
+  saveBooks = book => {
+    API.saveBook(book)
+      .then(res => {
+        const currentBook = this.state.books;
+        const bookSave = currentBook.filter(book => book.id !== res.data.id);
+        this.setState({
+          savedBooks: bookSave
+        });
+      })
+      .catch(err => console.log(err));
+    }
+    
 
   loadBooks = () => {
     API.getBooks()
@@ -67,31 +81,66 @@ class Books extends Component {
               handleFormSubmit={this.handleFormSubmit}
             />
           </div><br />
+        
             {this.state.books.length ? (
-              <List>
-                {this.state.books.map(book => {
-                  return(
-                    // <div>
-                      <ListItem
-                        key={book.id}
-                        title={book.volumeInfo.title}
-                        author={book.volumeInfo.authors ? book.volumeInfo.authors : ["No Author Available"]}
-                        synopsis={book.volumeInfo.description}
-                        src={book.volumeInfo.imageLinks.thumbnail}
-                      />
-                    // </div>
-                    )
-                })} 
-            </List>
-            ) : (
-              <h3>Please search for a book</h3>
-            )}
-              
-          
-             
-      </Container>      
+                  <Container fluid>
+                    <List>
+                      {this.state.books.map(book => {
+                        return(
+                          <div className="card">
+                              <ListItem key={book.id}>
+                                <div className="googlebooks">
+                                  <a
+                                    // key={"" + index + book.id}
+                                    href={book.volumeInfo.infoLink}
+                                  >
+                                    {book.volumeInfo.title}
+                                  </a>
+                                  <p>Written by: {book.volumeInfo.authors ? book.volumeInfo.authors : ["No Author Available"]}</p>
+                                  <p>
+                                    <img align="left" style={{paddingRight:10}}
+                                      src={book.volumeInfo.imageLinks.thumbnail} alt="Book"
+                                    />
+                                    {book.volumeInfo.description}
+                                  </p>
+                                </div>
+                                <div className="save-btn">
+                                  <SaveBtn 
+                                    btntype="info"
+                                    onClick={() => this.saveBooks({
+                                      title: book.volumeInfo.title,
+                                      author: book.volumeInfo.authors,
+                                      synopsis: book.volumeInfo.description,
+                                      thumbnail: book.volumeInfo.imageLinks.thumbnail,
+                                      link: book.volumeInfo.infoLink,
+                                      _id: book.id
+                                    })}
+                                  >
+                                    Save
+                                  </SaveBtn>
+                                </div>
 
-    );
+                              </ListItem>
+                            
+                            
+                            
+                          </div> 
+                          
+                        )
+                        
+                                            
+                      })} 
+                    </List>
+                  </Container>
+                
+              
+
+              ) : (
+              <h3>Please search for a book</h3>
+              )}
+      </Container>
+    )
+    
   }
 }
 
