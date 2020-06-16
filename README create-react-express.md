@@ -1,29 +1,25 @@
-# Create React Express App
+# React Google Book Search
 
-## About This Boilerplate
+## Overview
+This was an assignment for my coding bootcamp.  It was designed to be a MongoDB Single Page Application.  This is accomplished through the use of react-router-dom, which hides and shows React components based on user actions.  It is a full MERN stack application.
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+## NPM Packages
+Mongoose, axios, react-router-dom
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+## How it works
+Users enter the tite of a book that they would like to search for on the Google Books API.  The API returns the Title(with link to the book), author(s), synopsis, and thumbnail.  The user can then save the book and it will save to a database.  This saved information can be retrieved by the user and then deleted.
 
-## Starting the app locally
+## Technologies Used
+* Bootstrap
+* Express
+* MongoDB
+* Node.js
+* React
+* Heroku
 
-Start by installing front and backend dependencies. While in this directory, run the following command:
+ ### Links
+ * GitHub Repo: https://github.com/cshanebrown78/REACT-Google-Book-Search
+ * App: https://boiling-refuge-58776.herokuapp.com/
 
-```
-npm install
-```
 
-This should install node modules within the server and the client folder.
 
-After both installations complete, run the following command in your terminal:
-
-```
-npm start
-```
-
-Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
-
-## Deployment (Heroku)
-
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
