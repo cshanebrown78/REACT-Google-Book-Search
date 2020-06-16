@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const bookSchema = new Schema({
   title: { type: String, required: true },
-  author: String,
+  author: [{type: String,}],
   synopsis: String,
   thumbnail: String,
   link: String,
