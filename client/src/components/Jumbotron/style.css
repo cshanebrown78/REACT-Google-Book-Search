@@ -1,7 +1,14 @@
 .jumbotron h1 {
     text-align: center;
+    color: white;
 } 
 
 .jumbotron h3 {
     text-align: center;
+    color: white;
 } 
+
+.jumbotron {
+    background-image: url("https://wallpaperaccess.com/full/124383.jpg");
+    background-size: cover;
+}

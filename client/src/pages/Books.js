@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import SaveBtn from "../components/SaveBtn";
-// import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
-// import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import SearchForm from "../components/SearchForm";
@@ -12,19 +10,10 @@ class Books extends Component {
   state = {
     books: [],
     savedBooks: [],
-    result: {},
     search: "",
-    title: "",
-    author: "",
-    synopsis: "",
   };
 
-  // componentDidMount() {
-  //   this.searchBooks("Harry Potter");
-  // }
-
   searchBooks = (query) => {
-    console.log("query= " + query);
     API.search(query)
       .then((res) => this.setState({ books: res.data.items }))
       .catch((err) => console.log(err));
@@ -39,20 +28,6 @@ class Books extends Component {
           savedBooks: bookSave,
         });
       })
-      .catch((err) => console.log(err));
-  };
-
-  loadBooks = () => {
-    API.getBooks()
-      .then((res) =>
-        this.setState({ books: res.data, title: "", author: "", synopsis: "" })
-      )
-      .catch((err) => console.log(err));
-  };
-
-  deleteBook = (id) => {
-    API.deleteBook(id)
-      .then((res) => this.loadBooks())
       .catch((err) => console.log(err));
   };
 
@@ -72,13 +47,11 @@ class Books extends Component {
     return (
       <Container fluid>
         <div className="card">
-          {/* <form> */}
             <SearchForm
               value={this.state.search}
               handleInputChange={this.handleInputChange}
               handleFormSubmit={this.handleFormSubmit}
             />
-          {/* </form> */}
         </div>
         <br />
         {this.state.books.length ? (
@@ -91,7 +64,7 @@ class Books extends Component {
                       <a key={"" + index + book.id} 
                       href={book.volumeInfo.infoLink}
                       >
-                        {book.volumeInfo.title}
+                        <strong>{book.volumeInfo.title}</strong>
                       </a>
                       <p>
                         Written by:{" "}
@@ -123,7 +96,7 @@ class Books extends Component {
                     <img
                       align="left"
                       style={{ paddingRight: 10 }}
-                      src={book.volumeInfo.imageLinks.thumbnail}
+                      src={book.volumeInfo.imageLinks.thumbnail ? book.volumeInfo.imageLinks.thumbnail : "#"}
                       alt="Book"
                     />
                     {book.volumeInfo.description}

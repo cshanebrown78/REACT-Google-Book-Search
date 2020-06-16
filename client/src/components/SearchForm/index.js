@@ -1,4 +1,5 @@
 import React from "react";
+import "./style.css"
 
 // This file exports the Input, TextArea, and FormBtn components
 
@@ -18,7 +19,7 @@ function SearchForm(props) {
           id="search"
         />
         {/* <br /> */}
-        <button onClick={props.handleFormSubmit} style={{ float: "right", marginBottom: 10 }} className="btn btn-primary">
+        <button onClick={props.handleFormSubmit} style={{ float: "right", marginBottom: 10 }} className="btn btn-secondary">
           Search
         </button>
       </div>

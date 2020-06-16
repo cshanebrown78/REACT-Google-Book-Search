@@ -5,7 +5,7 @@ import "./style.css"
 
 export const List = ({ children }) => {
   return (
-    <div className="list-overflow-container">
+    <div className="list-overflow-container searched-books">
       <ul className="list-group">{children}</ul>
     </div>
   );

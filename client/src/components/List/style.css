@@ -31,4 +31,13 @@
   .list-overflow-container li:last-child {
     border-bottom: none;
   }
+
+  .list-group-item {
+    background-image: url("https://cdn.wallpapersafari.com/29/23/IHz9xU.jpg");
+    background-size: cover
+  }
+
+
+
+ 
   
