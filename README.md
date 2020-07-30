@@ -9,6 +9,8 @@ Mongoose, axios, react-router-dom
 ## How it works
 Users enter the tite of a book that they would like to search for on the Google Books API.  The API returns the Title(with link to the book), author(s), synopsis, and thumbnail.  The user can then save the book and it will save to a database.  This saved information can be retrieved by the user and then deleted.
 
+![Page Demo](assets/booksearch.gif)
+
 ## Technologies Used
 * Bootstrap
 * Express
